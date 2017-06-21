@@ -4,8 +4,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-const {BrowserRouter, Route, Switch} = require('react-router-dom');
-const Router = BrowserRouter;
+const {TodoApp} = require('TodoApp');
 
 // load foundation
 $(document).foundation();
@@ -15,9 +14,9 @@ require('style-loader!css-loader!sass-loader!applicationStyles');
 
 ReactDOM.render(
 
-  <Router>
-    <p>Boilerplate 3 Projekt</p>
-  </Router>,
+  <div>
+    <TodoApp/>
+  </div>,
 
   document.getElementById('app')
 );

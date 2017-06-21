@@ -29,6 +29,11 @@ module.exports = {
   },
   // what file extensions should be used for processing webpack
   resolve: {
+    // with "modules" there is no need for all the alias entries for the components
+    modules: [
+      'node_modules',
+      'app/components'
+    ],
     // where to find the jsx modules
     alias: {
       // example:

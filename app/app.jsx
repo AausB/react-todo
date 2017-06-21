@@ -14,9 +14,7 @@ require('style-loader!css-loader!sass-loader!applicationStyles');
 
 ReactDOM.render(
 
-  <div>
-    <TodoApp/>
-  </div>,
+    <TodoApp/>,
 
   document.getElementById('app')
 );

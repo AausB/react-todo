@@ -16,6 +16,7 @@ describe('TodoSearch', () => {
     let spy = expect.createSpy();
 
     let todoSearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy}/>);
+
     todoSearch.refs.searchText.value = searchText;
     TestUtils.Simulate.change(todoSearch.refs.searchText);
 
@@ -28,6 +29,7 @@ describe('TodoSearch', () => {
     let spy = expect.createSpy();
 
     let todoSearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy}/>);
+
     todoSearch.refs.showCompleted.checked = showCompleted;
     TestUtils.Simulate.change(todoSearch.refs.showCompleted);
 

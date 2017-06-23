@@ -1,4 +1,5 @@
 const React = require('react');
+const uuid = require('node-uuid');
 
 const {TodoList} = require('TodoList');
 const {AddTodo} = require('AddTodo');
@@ -14,25 +15,25 @@ class TodoApp extends React.Component {
 
       todos: [
         {
-          id: 1,
+          // generate a random id
+          // needed by react to identify the individual todo items
+          id: uuid(),
           text: 'Walk the dog'
         },
         {
-          id: 2,
+          id: uuid(),
           text: 'Clean the yard'
         },
         {
-          id: 3,
+          id: uuid(),
           text: 'Leave mail on porch'
         },
         {
-          id: 4,
+          id: uuid(),
           text: 'Play video games'
         }
       ]
     };
-
-    console.log(this);
   }
 
   handleSearch = (showCompleted, searchText) => {
@@ -44,7 +45,17 @@ class TodoApp extends React.Component {
    }
 
   handleAddTodo = (text) => {
-    alert('newTodo: ' + text);
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          // generate a random id
+          // needed by react to identify the individual todo items
+          id: uuid(),
+          text: text
+        }
+      ]
+    });
   }
 
   render() {

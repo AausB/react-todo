@@ -41,7 +41,7 @@ class TodoApp extends React.Component {
         searchText: searchText.toLowerCase()
       }
     );
-  }
+   }
 
   handleAddTodo = (text) => {
     alert('newTodo: ' + text);

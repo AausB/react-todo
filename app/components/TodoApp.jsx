@@ -46,6 +46,8 @@ class TodoApp extends React.Component {
 
   handleAddTodo = (text) => {
     this.setState({
+      // take the previous state with the ...(spread)operator
+      // and add the new todo afterwards
       todos: [
         ...this.state.todos,
         {

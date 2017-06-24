@@ -22,6 +22,7 @@ describe('Todo', () => {
     let todo = TestUtils.renderIntoDocument(<Todo {...todoData} onToggle={spy}/>);
 
     let $element = $(ReactDOM.findDOMNode(todo));
+    // this is the clickable div:
     TestUtils.Simulate.click($element[0]);
 
     expect(spy).toHaveBeenCalledWith(199);

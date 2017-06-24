@@ -5,6 +5,8 @@ const {TodoList} = require('TodoList');
 const {AddTodo} = require('AddTodo');
 const {TodoSearch} = require('TodoSearch');
 
+const {TodoAPI} = require('TodoAPI');
+
 class TodoApp extends React.Component {
   constructor(props) {
     super(props);
@@ -13,31 +15,12 @@ class TodoApp extends React.Component {
       showCompleted: false,
       searchText: '',
 
-      todos: [
-        {
-          // generate a random id
-          // needed by react to identify the individual todo items
-          id: uuid(),
-          text: 'Walk the dog',
-          completed: false
-        },
-        {
-          id: uuid(),
-          text: 'Clean the yard',
-          completed: true
-        },
-        {
-          id: uuid(),
-          text: 'Leave mail on porch',
-          completed: true
-        },
-        {
-          id: uuid(),
-          text: 'Play video games',
-          completed: false
-        }
-      ]
+      todos: TodoAPI.getTodos()
     };
+  }
+
+  componentDidUpdate = () => {
+    TodoAPI.setTodos(this.state.todos);
   }
 
   handleToggle = (id) => {
@@ -80,12 +63,13 @@ class TodoApp extends React.Component {
   }
 
   render() {
-    let {todos} = this.state;
+    let {todos, showCompleted, searchText} = this.state;
+    let filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
     return(
       <div>
         <TodoSearch onSearch={this.handleSearch}/>
-        <TodoList todos={todos} onToggle={this.handleToggle}/>
+        <TodoList todos={filteredTodos} onToggle={this.handleToggle}/>
         <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
     );

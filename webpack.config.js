@@ -32,7 +32,8 @@ module.exports = {
     // with "modules" there is no need for all the alias entries for the components
     modules: [
       'node_modules',
-      'app/components'
+      'app/components',
+      'app/api'
     ],
     // where to find the jsx modules
     alias: {

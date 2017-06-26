@@ -8,6 +8,11 @@ class TodoList extends React.Component {
     let {todos} = this.props;
 
     const renderTodos = () => {
+      if (todos.length === 0) {
+        return(
+          <p className='container__message'>Nothing to do</p>
+        );
+      }
       // return a new array with react jsx
       // for each item of the array
       //

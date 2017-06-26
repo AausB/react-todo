@@ -35,6 +35,28 @@ const TodoAPI = {
       return !todo.completed || showCompleted;
     });
 
+    // filter by searchText
+    if (searchText.length > 0) {
+      filteredTodos = filteredTodos.filter((todo) => {
+        let text = todo.text.toLowerCase();
+        return text.indexOf(searchText) > -1 ? true : false;
+      })
+    }
+
+    // Sort todos with non-completed first
+    filteredTodos.sort((a, b) => {
+      if (!a.completed && b.completed ) {
+        // a before b
+        return -1;
+      } else if (a.completed && !b.completed) {
+        // a after b
+        return 1;
+      } else {
+        // do nothing
+        return 0;
+      }
+    });
+
     return filteredTodos;
   }
 }
